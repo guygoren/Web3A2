@@ -1,4 +1,4 @@
-
+import React from "react";
 export const LoginBox = () => {
     return (
       <div>
@@ -9,7 +9,7 @@ export const LoginBox = () => {
       </label>
         <button
         onClick={() => {
-          console.log("hello")
+          console.log("hello");
         }
       }
       >
@@ -20,4 +20,4 @@ export const LoginBox = () => {
         </button>
       </div>
     );
-    }
+  }
