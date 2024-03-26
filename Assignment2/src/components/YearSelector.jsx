@@ -1,30 +1,32 @@
 import React from 'react'
-import Select from 'react-select'
+import { useDispatch, useSelector } from 'react-redux';
+import { setYear } from '../slices/yearSlice';
 
-const options = [
 
-]
 
 function makeYears() {
-    for (let year = 2000; year <= 2023; year++) {
-        options.push(year);
-      }
-      console.log(options);
-}  
+  const options = []
+  for (let year = 2000; year <= 2023; year++) {
+    options.push(<option key={year} value={year}>{year}</option>);
+  }
+  return options;
+}
 
 export const YearSelector = () => {
-    
-  
+  const selectedYear = useSelector((state) => state.year.selectedYear);
+  const dispatch = useDispatch();
 
-    return(
-        <div>
-        <h1>Favorite List</h1>
-        <ul className="flex-list">
-          {makeYears()}
-        </ul>
-      </div>
-    )
+  const handleYearChange = (event) => {
+    dispatch(setYear(Number(event.target.value)))
+  }
 
-  
+  return (
+    <>
+      <span style={{ "marginRight": "10px"}}>Select a Season</span>
+      <select style={{"marginTop": "4px" }} value={selectedYear} onChange={handleYearChange} className="flex-list">
+        {makeYears()}
+      </select>
+   </>
+  )
 }
 

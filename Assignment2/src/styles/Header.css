@@ -1,0 +1,28 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150vh; /* You can adjust this to your preference */
+    height: 8vh; /* You can adjust this to your preference */
+    border: 2px solid #696969; /* for the parent container */
+  }
+  
+  .box {
+    display: flex;
+    /* border: 2px solid red; */
+    height: 100%; /* Adjust based on your preference */
+    flex-grow: 1; /* Flex grow is used to make the boxes flexible */
+    margin: 0 10px; /* This adds spacing between the boxes */
+    align-items: center;
+    justify-content: center; /* This centers the buttons horizontally */
+  }
+  
+  #box1 { flex-basis: 15%; }
+  #box2 { flex-basis: 60%; }
+  #box3 { flex-basis: 25%; }
+  
+  .button-container {
+    display: flex; /* This line will align the buttons inline */
+    justify-content: center; /* This centers the buttons horizontally */
+    align-items: center; /* This centers the buttons vertically */
+  }
