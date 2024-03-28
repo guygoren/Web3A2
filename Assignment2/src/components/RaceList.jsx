@@ -24,7 +24,7 @@ export const RaceList = () => {
     
 return (
   <div>
-    Who is the best racist?
+    Races
     <h1>{selectedYear}</h1>
     <table style={{ "width": "100%" }}>
       <thead>
