@@ -1,16 +1,16 @@
 import { Header } from "./Header"
 import { RaceList } from "./RaceList"
-import {ResultList} from "./ResultList"
+import { DataSection } from "./DataSection"
+import "../styles/MainPage.css"
 
 export const MainPage = () => {
-  
-
-  
-    return (
-        <div>
+  return (
+    <div>
       <Header />
-      <RaceList />
-      <ResultList />
+      <div className="main-columns">
+        <RaceList />
+        <DataSection />
       </div>
-    )
-  }
+    </div>
+  )
+}

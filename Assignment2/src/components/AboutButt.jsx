@@ -6,12 +6,14 @@ export const AboutButt = () => {
   // const dispatch = useDispatch();
 
   const showModal = (event) => {
-    console.log("about butt")
+    // dispatch(setYear(Number(event.target.value)));
+    console.log("me no code yet")
   };
 
   return (
     <button onClick={showModal}>
-    About Butt
-  </button>
+      About Butt
+    </button>
   )
 }
+

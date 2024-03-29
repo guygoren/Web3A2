@@ -6,12 +6,14 @@ export const FavoritesButt = () => {
   // const dispatch = useDispatch();
 
   const showModal = (event) => {
-    console.log("fav butt")
+    // dispatch(setYear(Number(event.target.value)));
+    console.log("me no code yet")
   };
 
   return (
-    <button onClick={showModal} style={{ "marginRight": "10px"}}>
+    <button onClick={showModal} style={{ "marginRight": "10px" }}>
       Favorites Butt
     </button>
   )
 }
+

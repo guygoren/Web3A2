@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import yearReducer from './slices/yearSlice';
-import raceReducer from './slices/racesSlice'
+import raceReducer from './slices/raceSlice';
+import pageReducer from './slices/pageSlice';
 // Import your reducers here
 // import someReducer from './features/someFeature/someReducer';
 
 export const store = configureStore({
   reducer: {
     year: yearReducer,
-    race: raceReducer
+    race: raceReducer,
+    page: pageReducer,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(yourMiddleware),
   // You can add more middleware here

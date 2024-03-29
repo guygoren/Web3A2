@@ -1,48 +1,61 @@
-import React from "react";
-import { useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { setRaces } from "../slices/racesSlice";
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { setRaces, setSelectedRace } from '../slices/raceSlice';
+import { useEffect } from 'react';
+import "../styles/RaceList.css"
+
+import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
+
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import FlagIcon from '@mui/icons-material/Flag';
+import StarIcon from '@mui/icons-material/Star';
 
 export const RaceList = () => {
   const races = useSelector((state) => state.race.races);
-  const selectedYear = useSelector((state) => state.year.selectedYear);
+  const selectedYear = useSelector((state) => state.year.selectedYear)
+  const selectedRace = useSelector((state) => state.race.selectedRace)
+
   const dispatch = useDispatch();
 
-  const makeRaceList = (races) => {
-    dispatch(setRaces(races))
-  }
+  const setNewSeasonRaces = (races) => {
+    dispatch(setRaces(races));
+  };
 
-  useEffect( () => {
-    let url = `https://four513assignment1evangadsby.onrender.com/api/races/season/${selectedYear}`;
-    console.log("‘fetching ... here to check if I’ve gone infinite’");
-    fetch (url)
-    .then(response => response.json())
-    .then(data => {makeRaceList(data)
-    console.log(races)
-  });
-}, [selectedYear])
-    
-return (
-  <div>
-    Races
-    <h1>{selectedYear}</h1>
-    <table style={{ "width": "100%" }}>
-      <thead>
-        <tr>
-          <th style={{ "width": "5%", "border": "1px solid #696969" }}>ID</th>
-          <th style={{ "width": "50%", "border": "1px solid #696969" }}>Name</th>
-          <th style={{ "width": "30%", "border": "1px solid #696969" }}>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        {races.map((race, index) => (
-            <tr key={index}>
-              <td>{index}</td>
-              <td>{race.name}</td>
-              <td>Some buttons</td>
+  const setCurrentRace = (raceId) => {
+    dispatch(setSelectedRace(Number(raceId)));
+  };
+
+  useEffect(() => {
+    let url = `${ApiEndpointEnum.GetSeasonRaces}/${selectedYear}`
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setNewSeasonRaces(data)
+      });
+  }, [selectedYear])
+
+  return (
+    <>
+      <div className="box-column" id="column1">
+        <div>{selectedYear}'s Races</div>
+        <table style={{ "width": "100%" }}>
+          <thead>
+            <tr>
+              <th style={{ "width": "5%" }}>ID</th>
+              <th style={{ "width": "80%" }}>Name (cur: {selectedRace})</th>
             </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
+          </thead>
+          <tbody>
+            {races.map((race, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td onClick={() => setCurrentRace(race.raceId)}><a href="#" onClick={() => { return }}>{race.name}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  )
+}

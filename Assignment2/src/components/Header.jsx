@@ -19,7 +19,6 @@ export const Header = () => {
           <FavoritesButt />
           <AboutButt />
         </div>
-        
       </div>
     </>
   );
