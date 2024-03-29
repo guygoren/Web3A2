@@ -6,7 +6,8 @@ export const raceSlice = createSlice({
     races: [],
     selectedRace: 1,
     qualifying: [],
-    result: []
+    result: [],
+    raceInfo: {}
   },
   reducers: {
     setRaces: (state, action) => {
@@ -21,6 +22,9 @@ export const raceSlice = createSlice({
     setResult: (state, action) => {
       state.result = action.payload;
     },
+    setRaceInfo: (state, action) => {
+      state.raceInfo = action.payload;
+    }
   },
 });
 
@@ -28,7 +32,8 @@ export const {
   setRaces,
   setSelectedRace,
   setQualifying,
-  setResult
+  setResult,
+  setRaceInfo
 } = raceSlice.actions;
 
 export default raceSlice.reducer;

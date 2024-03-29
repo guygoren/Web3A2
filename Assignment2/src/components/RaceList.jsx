@@ -6,10 +6,6 @@ import "../styles/RaceList.css"
 
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import FlagIcon from '@mui/icons-material/Flag';
-import StarIcon from '@mui/icons-material/Star';
-
 export const RaceList = () => {
   const races = useSelector((state) => state.race.races);
   const selectedYear = useSelector((state) => state.year.selectedYear)

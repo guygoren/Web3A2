@@ -1,4 +1,4 @@
-let baseUrl = "http://localhost:8080"
+let baseUrl = "https://four513assignment1evangadsby.onrender.com"
 // https://four513assignment1evangadsby.onrender.com
 
 export const ApiEndpointEnum = {
@@ -6,4 +6,6 @@ export const ApiEndpointEnum = {
   GetSeasonRaces: `${baseUrl}/api/races/season`,
   // /api/qualifying/:raceId
   GetQualifyingByRace: `${baseUrl}/api/qualifying`,
+  // /api/races/:raceid
+  GetRaceInformation: `${baseUrl}/api/races`,
 }
