@@ -8,6 +8,10 @@ export const ApiEndpointEnum = {
   GetQualifyingByRace: `${baseUrl}/api/qualifying`,
   // /api/races/:raceid
   GetRaceInformation: `${baseUrl}/api/races`,
-// /api/results/:raceid
+  // /api/results/:raceid
   GetRaceResults: `${baseUrl}/api/results/laps`,
+  // /api/standings/constructors/:raceId
+  GetConstructorStandings: `${baseUrl}/api/standings/constructors`,
+  // /api/standings/drivers/:raceId
+  GetDriverStandings: `${baseUrl}/api/standings/drivers`
 }

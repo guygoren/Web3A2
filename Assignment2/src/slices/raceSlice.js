@@ -8,7 +8,9 @@ export const raceSlice = createSlice({
     qualifying: [],
     result: [],
     raceInfo: {},
-    raceResults: []
+    raceResults: [],
+    driverStandings: [],
+    constructorsStandings: []
   },
   reducers: {
     setRaces: (state, action) => {
@@ -28,6 +30,12 @@ export const raceSlice = createSlice({
     },
     setRaceResults: (state, action) => {
       state.raceResults = action.payload;
+    },
+    setDriverStandings: (state, action) => {
+      state.driverStandings = action.payload;
+    },
+    setConstructorsStandings: (state, action) => {
+      state.constructorsStandings = action.payload;
     }
   },
 });
@@ -38,7 +46,9 @@ export const {
   setQualifying,
   setResult,
   setRaceInfo,
-  setRaceResults
+  setRaceResults,
+  setDriverStandings,
+  setConstructorsStandings
 } = raceSlice.actions;
 
 export default raceSlice.reducer;

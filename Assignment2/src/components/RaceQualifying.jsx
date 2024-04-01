@@ -41,8 +41,8 @@ export const RaceQualifying = () => {
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
-              <th style={{ "width": "25%" }}>&nbsp;</th>
-              <th style={{ "width": "25%" }}>&nbsp;</th>
+              <th style={{ "width": "25%" }}>driver name</th>
+              <th style={{ "width": "25%" }}>constructor name</th>
               <th style={{ "width": "10%" }}>Q1</th>
               <th style={{ "width": "10%" }}>Q2</th>
               <th style={{ "width": "10%" }}>Q3</th>

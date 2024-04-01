@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { setQualifying, setRaceResults } from '../slices/raceSlice';
+import { setRaceInfo, setRaceResults } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { RaceQualifying } from './RaceQualifying';
@@ -14,12 +14,12 @@ export const RaceResult = () => {
   const setResultsData = (results) => {
     dispatch(setRaceResults(results));
   };
-  const setQualifyingData = (qualifying) => {
-    dispatch(setQualifying(qualifying));
-  };
+  const setRaceInfoData = (information) => {
+    dispatch(setRaceInfo(information));
+  }
 
   useEffect(() => {
-    let qualUrl = `${ApiEndpointEnum.GetQualifyingByRace}/${selectedRace}`
+    let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
     let resultsUrl = `${ApiEndpointEnum.GetRaceResults}/${selectedRace}`
     fetch(resultsUrl)
     .then(response => response.json())
@@ -27,11 +27,12 @@ export const RaceResult = () => {
       setResultsData(data)
       console.log(data)
     });
-    fetch(qualUrl)
-      .then(response => response.json())
-      .then(data => {
-        setQualifyingData(data)
-      });
+    fetch(infoUrl)
+    .then(response => response.json())
+    .then(data => {
+      setRaceInfoData(data[0])
+      console.log(data[0])
+    });
   }, [selectedRace])
 
   return (
@@ -41,8 +42,8 @@ export const RaceResult = () => {
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
-              <th style={{ "width": "25%" }}>&nbsp;</th>
-              <th style={{ "width": "25%" }}>&nbsp;</th>
+              <th style={{ "width": "25%" }}>driver name</th>
+              <th style={{ "width": "25%" }}>constructor name</th>
               <th style={{ "width": "10%" }}>Laps</th>
               <th style={{ "width": "10%" }}>Pts</th>
             </tr>
