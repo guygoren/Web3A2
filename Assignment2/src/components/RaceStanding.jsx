@@ -51,7 +51,7 @@ export const RaceStanding = () => {
   return (
     <>
       <div className="box-column" id="column2">
-      Standings after Round:{raceInfo.round}  <br/> <table style={{ "width": "45%", "float": "left", "padding": "10px" }}>
+      Standings after Round: {raceInfo.round}  <br/> <table style={{ "width": "45%", "float": "left", "padding": "10px" }}>
         <caption style={{"padding": "10px"}}>Drivers</caption>
           <thead>
             <tr>

@@ -10,7 +10,8 @@ export const raceSlice = createSlice({
     raceInfo: {},
     raceResults: [],
     driverStandings: [],
-    constructorsStandings: []
+    constructorsStandings: [],
+    circuitPopup: false
   },
   reducers: {
     setRaces: (state, action) => {
@@ -36,6 +37,9 @@ export const raceSlice = createSlice({
     },
     setConstructorsStandings: (state, action) => {
       state.constructorsStandings = action.payload;
+    },
+    setCircuitPopup: (state, action) => {
+      state.circuitPopup = action.payload;
     }
   },
 });
@@ -48,7 +52,8 @@ export const {
   setRaceInfo,
   setRaceResults,
   setDriverStandings,
-  setConstructorsStandings
+  setConstructorsStandings,
+  setCircuitPopup
 } = raceSlice.actions;
 
 export default raceSlice.reducer;
