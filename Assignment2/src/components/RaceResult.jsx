@@ -53,8 +53,8 @@ export const RaceResult = () => {
               results.map((res, index) => (
               <tr key={index}>
                 <td>{res.position}</td>
-                <td>{res.drivers.forename} {res.drivers.surname}</td>
-                <td>{res.constructors.name}</td>
+                <td><button className='link' onClick={console.log(res.drivers.forename)}>{res.drivers.forename} {res.drivers.surname}</button></td>
+                <td><button className='link'>{res.constructors.name}</button></td>
                 <td>{res.laps}</td>
                 <td>{res.points}</td>
               </tr>
