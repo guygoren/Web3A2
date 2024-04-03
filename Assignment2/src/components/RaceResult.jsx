@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setRaceInfo, setRaceResults } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
+import { NamePopUp } from './NamePopUp';
 import { RaceQualifying } from './RaceQualifying';
+import { ConstructorPopUp } from './ConstructorPopUp';
 
 export const RaceResult = () => {
   const results = useSelector((state) => state.race.raceResults)
@@ -53,8 +55,8 @@ export const RaceResult = () => {
               results.map((res, index) => (
               <tr key={index}>
                 <td>{res.position}</td>
-                <td><button className='link' onClick={console.log(res.drivers.forename)}>{res.drivers.forename} {res.drivers.surname}</button></td>
-                <td><button className='link'>{res.constructors.name}</button></td>
+                <td><NamePopUp name={res.drivers.forename} /></td>
+                <td><ConstructorPopUp name={res.constructors.name}/></td>
                 <td>{res.laps}</td>
                 <td>{res.points}</td>
               </tr>
