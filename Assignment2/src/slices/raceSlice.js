@@ -37,9 +37,6 @@ export const raceSlice = createSlice({
     },
     setConstructorsStandings: (state, action) => {
       state.constructorsStandings = action.payload;
-    },
-    setCircuitPopup: (state, action) => {
-      state.circuitPopup = action.payload;
     }
   },
 });
@@ -52,8 +49,7 @@ export const {
   setRaceInfo,
   setRaceResults,
   setDriverStandings,
-  setConstructorsStandings,
-  setCircuitPopup
+  setConstructorsStandings
 } = raceSlice.actions;
 
 export default raceSlice.reducer;
