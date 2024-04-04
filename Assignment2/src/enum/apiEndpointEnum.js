@@ -15,5 +15,5 @@ export const ApiEndpointEnum = {
   // /api/standings/drivers/:raceId
   GetDriverStandings: `${baseUrl}/api/standings/drivers`,
   // /api/circuits/:ref
-  GetCircuitInfo: `${baseUrl}/api/circuits/:ref`
+  GetCircuitInfo: `${baseUrl}/api/circuits`
 }

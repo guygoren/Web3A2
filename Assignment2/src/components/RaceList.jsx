@@ -1,11 +1,13 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { setRaces, setSelectedRace } from '../slices/raceSlice';
-import { setIsOpen, setCircuitInfo } from '../slices/modalSlice';
+import { setIsOpen, setModalType } from '../slices/modalSlice';
+import { setCircuitId } from '../slices/circuitSlice';
 import { useEffect } from 'react';
 import "../styles/RaceList.css";
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
-import { CircuitModal } from './CircuitModal'
+import { Modal } from './Modal'
+import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
 export const RaceList = () => {
   const races = useSelector((state) => state.race.races);
@@ -13,9 +15,10 @@ export const RaceList = () => {
   const selectedRace = useSelector((state) => state.race.selectedRace)
   const dispatch = useDispatch();
 
-  const setOpener = (isOpen, circuitId) => {
+  const setOpener = (isOpen, circId, modalType) => {
     dispatch(setIsOpen(isOpen))
-    dispatch(setCircuitInfo(circuitId))
+    dispatch(setCircuitId(Number(circId)))
+    dispatch(setModalType(Number(modalType)))
   }
 
   const setNewSeasonRaces = (races) => {
@@ -52,13 +55,13 @@ export const RaceList = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td onClick={() => setCurrentRace(race.raceId)}><a href="#" onClick={() => { return }}>{race.name}</a></td>
-                <td><button onClick={() => setOpener(true, race.circuitId)}>Information</button></td>
+                <td><button onClick={() => setOpener(true, race.circuitId, ModalTypeEnum.CIRCUIT)}>Information</button></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <CircuitModal></CircuitModal>
+      <Modal />
     </>
   )
 }

@@ -1,28 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ModalTypeEnum } from '../enum/modalTypeEnum';
+
 export const modalSlice = createSlice({
-    name: 'modal',
-    initialState: {
-        isOpen: false,
-        circuitInfo: {},
-        circuitId: -1
+  name: 'modal',
+  initialState: {
+    isOpen: false,
+    modalType: ModalTypeEnum.CIRCUIT 
+  },
+  reducers: {
+    setIsOpen: (state, action) => {
+      state.isOpen = action.payload;
     },
-    reducers: {
-        setCircuitInfo: (state, action) => {
-            state.circuitInfo = action.payload;
-        },
-        setIsOpen: (state, action) => {
-            state.isOpen = action.payload;
-        },
-        setCircuitId: (state, action) => {
-            state.circuitId = action.circuitId;
-        }
+    setModalType: (state, action) => {
+      state.render = action.payload
     }
+  }
 });
 
 export const {
-    setCircuitInfo,
-    setIsOpen,
-    setCircuitId
+  setIsOpen,
+  setModalType,
 } = modalSlice.actions;
 
 export default modalSlice.reducer;
