@@ -8,15 +8,16 @@ import { useEffect } from 'react';
 export const CircuitModal = () => {
     const dispatch = useDispatch();
     const isOpen = useSelector((state) => state.modal.isOpen);
+    const circuitId = useSelector((state) => state.modal.circuitId)
 
     const setOpener = (isOpen) => {
         dispatch(setIsOpen(isOpen))
       }
 
     useEffect(() => {
-    
+       
        console.log(isOpen)
-      }, [isOpen])
+      }, [isOpen, circuitId])
     
     if (!isOpen) return null;
   

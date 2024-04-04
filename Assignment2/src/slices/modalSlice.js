@@ -3,7 +3,8 @@ export const modalSlice = createSlice({
     name: 'modal',
     initialState: {
         isOpen: false,
-        circuitInfo: []
+        circuitInfo: {},
+        circuitId: -1
     },
     reducers: {
         setCircuitInfo: (state, action) => {
@@ -11,13 +12,17 @@ export const modalSlice = createSlice({
         },
         setIsOpen: (state, action) => {
             state.isOpen = action.payload;
+        },
+        setCircuitId: (state, action) => {
+            state.circuitId = action.circuitId;
         }
     }
 });
 
 export const {
     setCircuitInfo,
-    setIsOpen
+    setIsOpen,
+    setCircuitId
 } = modalSlice.actions;
 
 export default modalSlice.reducer;

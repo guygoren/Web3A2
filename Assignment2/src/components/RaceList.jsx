@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { setRaces, setSelectedRace } from '../slices/raceSlice';
-import { setIsOpen } from '../slices/modalSlice';
+import { setIsOpen, setCircuitInfo } from '../slices/modalSlice';
 import { useEffect } from 'react';
 import "../styles/RaceList.css";
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
@@ -13,8 +13,9 @@ export const RaceList = () => {
   const selectedRace = useSelector((state) => state.race.selectedRace)
   const dispatch = useDispatch();
 
-  const setOpener = (isOpen) => {
+  const setOpener = (isOpen, circuitId) => {
     dispatch(setIsOpen(isOpen))
+    dispatch(setCircuitInfo(circuitId))
   }
 
   const setNewSeasonRaces = (races) => {
@@ -51,7 +52,7 @@ export const RaceList = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td onClick={() => setCurrentRace(race.raceId)}><a href="#" onClick={() => { return }}>{race.name}</a></td>
-                <td><button onClick={() => setOpener(true)}>Information</button></td>
+                <td><button onClick={() => setOpener(true, race.circuitId)}>Information</button></td>
               </tr>
             ))}
           </tbody>
