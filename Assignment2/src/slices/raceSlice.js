@@ -11,7 +11,6 @@ export const raceSlice = createSlice({
     raceResults: [],
     driverStandings: [],
     constructorsStandings: [],
-    circuitPopup: false
   },
   reducers: {
     setRaces: (state, action) => {

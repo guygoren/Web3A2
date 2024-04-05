@@ -5,9 +5,8 @@ import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { NamePopUp } from './NamePopUp';
 import { setConstructorId } from '../slices/constructorSlice';
-import { RaceQualifying } from './RaceQualifying';
+import { setDriverId } from '../slices/driverSlice';
 import { setIsOpen, setModalType } from '../slices/modalSlice';
-import { ConstructorModal } from './ConstructorModal';
 import { Modal } from './Modal';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
@@ -23,9 +22,16 @@ export const RaceResult = () => {
   const setRaceInfoData = (information) => {
     dispatch(setRaceInfo(information));
   }
-  const setOpener = (isOpen, constId, modalType) => {
+  const setOpener = (isOpen, id, modalType) => {
+    switch (modalType) {
+      case ModalTypeEnum.DRIVER:
+        dispatch(setDriverId(Number(id)))
+        break;
+      case ModalTypeEnum.CONSTRUCTOR:
+        dispatch(setConstructorId(Number(id)))
+        break;
+    }
     dispatch(setIsOpen(isOpen))
-    dispatch(setConstructorId(Number(constId)))
     dispatch(setModalType(Number(modalType)))
     console.log(modalType)
   }
@@ -36,6 +42,7 @@ export const RaceResult = () => {
     .then(response => response.json())
     .then(data => {
       setResultsData(data)
+      console.log("data")
       console.log(data)
     });
     fetch(infoUrl)
@@ -53,8 +60,8 @@ export const RaceResult = () => {
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
-              <th style={{ "width": "25%" }}>driver name</th>
-              <th style={{ "width": "25%" }}>constructor name</th>
+              <th style={{ "width": "25%" }}>Driver Name</th>
+              <th style={{ "width": "25%" }}>Constructor Name</th>
               <th style={{ "width": "10%" }}>Laps</th>
               <th style={{ "width": "10%" }}>Pts</th>
             </tr>
@@ -64,7 +71,7 @@ export const RaceResult = () => {
               results.map((res, index) => (
               <tr key={index}>
                 <td>{res.position}</td>
-                <td><NamePopUp name={res.drivers.forename} /></td>
+                <td><button className='link' onClick={() => setOpener(true, res.drivers.driverId, ModalTypeEnum.DRIVER) }> {res.drivers.forename}</button></td>
                 <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR) }> {res.constructors.name}</button></td>
                 <td>{res.laps}</td>
                 <td>{res.points}</td>
@@ -73,6 +80,7 @@ export const RaceResult = () => {
           </tbody>
         </table>
       </div>
+      <Modal />
     </>
   )
 }

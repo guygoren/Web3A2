@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 import { CircuitModal } from './CircuitModal';
 import { ConstructorModal } from './ConstructorModal';
+import { DriverModal } from './DriverModal';
 
 export const Modal = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ export const Modal = () => {
         return <CircuitModal />
       case ModalTypeEnum.CONSTRUCTOR:
         return <ConstructorModal />
+      case ModalTypeEnum.DRIVER:
+        return <DriverModal />
       default:
         return <div> this is crazy, but here is my number </div>
     }

@@ -20,7 +20,7 @@ export const YearSelector = () => {
 
   return (
     <>
-      <span style={{ "marginRight": "10px" }}>Sussy year</span>
+      <span style={{ "marginRight": "10px" }}>Selected Year</span>
       <select style={{ "marginTop": "4px" }} value={selectedYear} onChange={handleYearChange} className="flex-list">
         {makeYears()}
       </select>

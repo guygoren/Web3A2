@@ -1,30 +1,28 @@
-import React from 'react'
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
-import { setConstructorInfo } from '../slices/constructorSlice';
+import { setDriverInfo } from '../slices/driverSlice';
 
 
-export const ConstructorModal = () => {
-  const constructorId = useSelector((state) => state.constructors.constructorId)
-  const constructorInfo = useSelector((state) => state.constructors.constructorInfo)
+export const DriverModal = () => {
+  const driverId = useSelector((state) => state.driver.driverId)
+  const driverInfo = useSelector((state) => state.driver.driverInfo)
   const dispatch = useDispatch();
 
-  const setConstructorInfoData = (info) => {
-    dispatch(setConstructorInfo(info))
+  const setDriverInfoData = (info) => {
+    dispatch(setDriverInfo(info))
   }
 
   useEffect(() => {
-    let url = `${ApiEndpointEnum.GetConstructorInfo}/${constructorId}`
+    let url = `${ApiEndpointEnum.GetDriverInfo}/${driverId}`
 
     fetch(url)
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        setConstructorInfoData(data)
+        setDriverInfoData(data)
       });
-  }, [constructorId])
+  }, [driverId])
 
   const renderData = (info) => {
     if (info && info.length > 0) {
@@ -41,8 +39,8 @@ export const ConstructorModal = () => {
 
   return (
     <>
-      Constructor Data
-      {renderData(constructorInfo)}
+      Driver Info
+      {renderData(driverInfo)}
     </>
   );
 };

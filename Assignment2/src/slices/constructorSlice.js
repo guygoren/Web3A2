@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const constructorSlice = createSlice({
-  name: 'constructor',
+  name: 'constructors',
   initialState: {
     constructorInfo: [],
-    constructorId: 5
+    constructorId: 0
   },
   reducers: {
     setConstructorInfo: (state, action) => {
