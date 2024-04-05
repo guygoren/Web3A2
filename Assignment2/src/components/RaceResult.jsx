@@ -4,8 +4,12 @@ import { setRaceInfo, setRaceResults } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { NamePopUp } from './NamePopUp';
+import { setConstructorId } from '../slices/constructorSlice';
 import { RaceQualifying } from './RaceQualifying';
-import { ConstructorPopUp } from './ConstructorPopUp';
+import { setIsOpen, setModalType } from '../slices/modalSlice';
+import { ConstructorModal } from './ConstructorModal';
+import { Modal } from './Modal';
+import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
 export const RaceResult = () => {
   const results = useSelector((state) => state.race.raceResults)
@@ -19,7 +23,11 @@ export const RaceResult = () => {
   const setRaceInfoData = (information) => {
     dispatch(setRaceInfo(information));
   }
-
+  const setOpener = (isOpen, constId, modalType) => {
+    dispatch(setIsOpen(isOpen))
+    dispatch(setConstructorId(Number(constId)))
+    dispatch(setModalType(Number(modalType)))
+  }
   useEffect(() => {
     let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
     let resultsUrl = `${ApiEndpointEnum.GetRaceResults}/${selectedRace}`
@@ -56,7 +64,7 @@ export const RaceResult = () => {
               <tr key={index}>
                 <td>{res.position}</td>
                 <td><NamePopUp name={res.drivers.forename} /></td>
-                <td><ConstructorPopUp name={res.constructors.name}/></td>
+                <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR)}>{res.constructors.name}</button></td>
                 <td>{res.laps}</td>
                 <td>{res.points}</td>
               </tr>

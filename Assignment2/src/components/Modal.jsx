@@ -5,6 +5,7 @@ import { setIsOpen } from '../slices/modalSlice';
 import { useEffect } from 'react';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 import { CircuitModal } from './CircuitModal';
+import { ConstructorModal } from './ConstructorModal';
 
 export const Modal = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ export const Modal = () => {
     switch (modalType) {
       case ModalTypeEnum.CIRCUIT:
         return <CircuitModal />
+      case ModalTypeEnum.CONSTRUCTOR:
+        return <ConstructorModal />
       default:
         return <div> this is crazy, but here is my number </div>
     }

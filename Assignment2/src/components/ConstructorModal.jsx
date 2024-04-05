@@ -1,36 +1,34 @@
 import React from 'react'
-import '../styles/modal.css'
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCircuitInfo } from '../slices/circuitSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 
-export const CircuitModal = () => {
-  const circuitId = useSelector((state) => state.circuit.circuitId)
-  const circuitInfo = useSelector((state) => state.circuit.circuitInfo)
+export const ConstructorModal = () => {
+  const ConstructorId = useSelector((state) => state.constructor.ConstructorId)
+  const ConstructorInfo = useSelector((state) => state.constructor.ConstructorInfo)
   const dispatch = useDispatch();
 
-  const setCircuitInfoData = (info) => {
-    dispatch(setCircuitInfo(info))
+  const setConstructorInfoData = (info) => {
+    dispatch(setConstructorInfo(info))
   }
 
   useEffect(() => {
-    let url = `${ApiEndpointEnum.GetCircuitInfo}/${circuitId}`
+    let url = `${ApiEndpointEnum.GetConstructorInfo}/${ConstructorId}`
 
     fetch(url)
       .then(response => response.json())
       .then(data => {
         console.log(data)
-        setCircuitInfoData(data)
+        setConstructorInfoData(data)
       });
-  }, [circuitId])
+  }, [ConstructorId])
 
   const renderData = (info) => {
     if (info && info.length > 0) {
       return <>
       <div> Name: {info[0].name} </div>
-         <div> location: {info[0].location} </div>
-          <div> country: {info[0].country} </div>
+         <div> Nationality: {info[0].nationality} </div>
          <div> url: {info[0].url}<br/> </div>
          <button>Add Favorites</button>
       </>
@@ -41,8 +39,10 @@ export const CircuitModal = () => {
 
   return (
     <>
-      Circuit Data
-      {renderData(circuitInfo)}
+      Constructor Data
+      {renderData(ConstructorInfo)}
     </>
   );
 };
+  
+
