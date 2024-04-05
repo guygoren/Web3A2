@@ -1,25 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const FavouriteSlice = createSlice({
-    name: 'modal',
-    initialState: {
-      isOpen: false,
-      modalType: ModalTypeEnum.FAVOURITE
+  name: 'favourite',
+  initialState: {
+    circuitfavourites: [],
+    driverfavourites: [],
+    constructorfavourites: [],
+  },
+  reducers: {
+    setcircuitfavourites: (state, action) => {
+      state.circuitfavourites = action.payload;
     },
-    reducers: {
-      setIsOpen: (state, action) => {
-        state.isOpen = action.payload;
-      },
-      setModalType: (state, action) => {
-        state.modalType = action.payload
-      }
-    }
-  });
-  
-  export const {
-    setIsOpen,
-    setModalType,
-  } = ModalSlice.actions;
-  
-  export default ModalSlice.reducer;
-  
+    setpersonfavourites: (state, action) => {
+      state.personfavourites = action.payload;
+    },
+    setconstructorfavourites: (state, action) => {
+      state.constructorfavourites = action.payload;
+    },
+  }
+});
+
+export const {
+  setcircuitfavourites,
+  setpersonfavourites,
+  setconstructorfavourites,
+} = FavouriteSlice.actions;
+
+export default FavouriteSlice.reducer;

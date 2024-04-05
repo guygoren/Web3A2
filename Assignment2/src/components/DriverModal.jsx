@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { setDriverInfo } from '../slices/driverSlice';
+import { favDriver } from './FavouriteList';
 
 
 export const DriverModal = () => {
@@ -30,7 +31,21 @@ export const DriverModal = () => {
       <div> Name: {info[0].forename} {info[0].surname} </div>
          <div> Nationality: {info[0].nationality} </div>
          <div> url: {info[0].url}<br/> </div>
-         <button>Add Favorites</button>
+         <button
+          onClick={() => {
+           // creates an array with the values of favorites
+            if (favDriver.indexOf(info[0].forename) > -1) {
+              return
+            }
+            else{
+              favDriver.push(info[0].forename);
+            }
+            console.log(favDriver)
+            }
+          }
+        >
+          ❤︎
+        </button>
       </>
     } else {
       return <span> No data </span>;

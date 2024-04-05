@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { setConstructorInfo } from '../slices/constructorSlice';
-
+import { favConst } from './FavouriteList';
 
 export const ConstructorModal = () => {
   const constructorId = useSelector((state) => state.constructors.constructorId)
@@ -26,7 +26,9 @@ export const ConstructorModal = () => {
       });
   }, [constructorId])
 
+
   const renderData = (info) => {
+  
     if (info && info.length > 0) {
       return <>
       <div> Name: {info[0].name} </div>
@@ -34,12 +36,16 @@ export const ConstructorModal = () => {
          <div> url: {info[0].url}<br/> </div>
          <button
           onClick={() => {
-            let favConst = [...favoritesConst]; // creates an array with the values of favorites
-            if (!favConst.some(f => f.id === info[0].id)) {
-              favConst.push(info[0].name);
-              setFavorites(favConst);
+           // creates an array with the values of favorites
+            if (favConst.indexOf(info[0].name) > -1) {
+              return
             }
-          }}
+            else{
+              favConst.push(info[0].name);
+            }
+            console.log(favConst)
+            }
+          }
         >
           ❤︎
         </button>
