@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import {  setRaceInfo, setDriverStandings, setConstructorsStandings } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
+import { Modal } from './Modal';
+import { setIsOpen, setModalType } from '../slices/modalSlice';
+import { setConstructorId } from '../slices/constructorSlice';
+import { setDriverId } from '../slices/driverSlice';
+import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
 export const RaceStanding = () => {
   const driverStandings = useSelector((state) => state.race.driverStandings)
@@ -14,7 +19,19 @@ export const RaceStanding = () => {
   const setRaceInfoData = (information) => {
     dispatch(setRaceInfo(information));
   }
-
+  const setOpener = (isOpen, id, modalType) => {
+    switch (modalType) {
+      case ModalTypeEnum.DRIVER:
+        dispatch(setDriverId(Number(id)))
+        break;
+      case ModalTypeEnum.CONSTRUCTOR:
+        dispatch(setConstructorId(Number(id)))
+        break;
+    }
+    dispatch(setIsOpen(isOpen))
+    dispatch(setModalType(Number(modalType)))
+    console.log(modalType)
+  }
 
   const setDriverData = (driverStandings) => {
     dispatch(setDriverStandings(driverStandings));
@@ -66,7 +83,7 @@ export const RaceStanding = () => {
               driverStandings.map((ds, index) => (
               <tr key={index}>
                 <td>{ds.position}</td>
-                <td>{ds.drivers.forename} {ds.drivers.surname}</td>
+                <td><button className='link' onClick={() => setOpener(true, ds.drivers.driverId, ModalTypeEnum.DRIVER) }> {ds.drivers.forename}</button></td>
                 <td>{ds.points}</td>
                 <td>{ds.wins}</td>
               </tr>
@@ -89,7 +106,7 @@ export const RaceStanding = () => {
               constructorsStandings.map((cs, index) => (
               <tr key={index}>
                 <td>{cs.position}</td>
-                <td>{cs.constructors.name}</td>
+                <td><button className='link' onClick={() => setOpener(true, cs.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR) }> {cs.constructors.name}</button></td>
                 <td>{cs.points}</td>
                 <td>{cs.wins}</td>
               </tr>

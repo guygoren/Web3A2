@@ -27,7 +27,7 @@ export const DriverModal = () => {
   const renderData = (info) => {
     if (info && info.length > 0) {
       return <>
-      <div> Name: {info[0].name} </div>
+      <div> Name: {info[0].forename} {info[0].surname} </div>
          <div> Nationality: {info[0].nationality} </div>
          <div> url: {info[0].url}<br/> </div>
          <button>Add Favorites</button>

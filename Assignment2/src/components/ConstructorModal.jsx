@@ -32,7 +32,17 @@ export const ConstructorModal = () => {
       <div> Name: {info[0].name} </div>
          <div> Nationality: {info[0].nationality} </div>
          <div> url: {info[0].url}<br/> </div>
-         <button>Add Favorites</button>
+         <button
+          onClick={() => {
+            let favConst = [...favoritesConst]; // creates an array with the values of favorites
+            if (!favConst.some(f => f.id === info[0].id)) {
+              favConst.push(info[0].name);
+              setFavorites(favConst);
+            }
+          }}
+        >
+          ❤︎
+        </button>
       </>
     } else {
       return <span> No data </span>;
