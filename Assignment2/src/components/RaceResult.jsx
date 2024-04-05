@@ -80,7 +80,6 @@ export const RaceResult = () => {
           </tbody>
         </table>
       </div>
-      <Modal />
     </>
   )
 }
