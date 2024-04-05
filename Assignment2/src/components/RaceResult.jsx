@@ -27,6 +27,7 @@ export const RaceResult = () => {
     dispatch(setIsOpen(isOpen))
     dispatch(setConstructorId(Number(constId)))
     dispatch(setModalType(Number(modalType)))
+    console.log(modalType)
   }
   useEffect(() => {
     let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
@@ -64,7 +65,7 @@ export const RaceResult = () => {
               <tr key={index}>
                 <td>{res.position}</td>
                 <td><NamePopUp name={res.drivers.forename} /></td>
-                <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR)}>{res.constructors.name}</button></td>
+                <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR) }> {res.constructors.name}</button></td>
                 <td>{res.laps}</td>
                 <td>{res.points}</td>
               </tr>

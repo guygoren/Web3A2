@@ -19,6 +19,7 @@ export const RaceList = () => {
     dispatch(setIsOpen(isOpen))
     dispatch(setCircuitId(Number(circId)))
     dispatch(setModalType(Number(modalType)))
+    console.log(modalType)
   }
 
   const setNewSeasonRaces = (races) => {
