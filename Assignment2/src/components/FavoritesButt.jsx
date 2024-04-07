@@ -15,6 +15,11 @@ export function FavoritesButt() {
   // Function to open modal
   const handleShow = () => setShow(true);
 
+  const clearFavourites = () => {
+    favCirc = []
+  }
+
+
   return (
     <>
       {/* The Favorites button */}
@@ -74,6 +79,9 @@ export function FavoritesButt() {
           {/* Button for closing Modal */}
           <Button variant="secondary" onClick={handleClose}>
             Close
+          </Button>
+          <Button variant="secondary" onClick={clearFavourites}>
+            Clear Favourites
           </Button>
         </Modal.Footer>
       </Modal>
