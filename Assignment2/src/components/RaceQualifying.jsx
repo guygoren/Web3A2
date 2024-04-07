@@ -22,11 +22,11 @@ export const RaceQualifying = () => {
     let qualUrl = `${ApiEndpointEnum.GetQualifyingByRace}/${selectedRace}`
     let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
     fetch(infoUrl)
-    .then(response => response.json())
-    .then(data => {
-      setRaceInfoData(data[0])
-      console.log(data[0])
-    });
+      .then(response => response.json())
+      .then(data => {
+        setRaceInfoData(data[0])
+        console.log(data[0])
+      });
     fetch(qualUrl)
       .then(response => response.json())
       .then(data => {
@@ -37,7 +37,7 @@ export const RaceQualifying = () => {
   return (
     <>
       <div className="box-column" id="column2">
-      {raceInfo.name}, Round:{raceInfo.round}, {raceInfo.year}, {raceInfo.date}, {raceInfo.circuits ? `${raceInfo.circuits.name}, ` : ""}, {raceInfo.url}        <table style={{ "width": "100%" }}>
+        {raceInfo.name}, Round:{raceInfo.round}, {raceInfo.year}, {raceInfo.date}, {raceInfo.circuits ? `${raceInfo.circuits.name}, ` : ""}, {raceInfo.url}        <table style={{ "width": "100%" }}>
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
@@ -51,15 +51,15 @@ export const RaceQualifying = () => {
           <tbody>
             {qualifying.message ? "" :
               qualifying.map((quali, index) => (
-              <tr key={index}>
-                <td>{quali.position}</td>
-                <td>{quali.drivers.forename} {quali.drivers.surname}</td>
-                <td>{quali.constructors.name}</td>
-                <td>{quali.q1}</td>
-                <td>{quali.q2}</td>
-                <td>{quali.q3}</td>
-              </tr>
-            ))}
+                <tr key={index}>
+                  <td>{quali.position}</td>
+                  <td>{quali.drivers.forename} {quali.drivers.surname}</td>
+                  <td>{quali.constructors.name}</td>
+                  <td>{quali.q1}</td>
+                  <td>{quali.q2}</td>
+                  <td>{quali.q3}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

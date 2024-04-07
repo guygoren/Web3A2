@@ -16,7 +16,7 @@
     border-radius: '5px';
   }
  */
- body.active-modal {
+body.active-modal {
   overflow-y: hidden;
 }
 
@@ -27,7 +27,8 @@
   font-size: 18px;
 }
 
-.modal, .overlay {
+.modal,
+.overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -38,8 +39,9 @@
 }
 
 .overlay {
-  background: rgba(49,49,49,0.8);
+  background: rgba(49, 49, 49, 0.8);
 }
+
 .modal-content {
   position: absolute;
   top: 40%;
@@ -51,7 +53,7 @@
   border-radius: 3px;
   max-width: 600px;
   min-width: 300px;
-  color:#333;
+  color: #333;
 }
 
 .modal-content button {

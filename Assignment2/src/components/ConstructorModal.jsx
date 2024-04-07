@@ -30,20 +30,20 @@ export const ConstructorModal = () => {
   const renderData = (info) => {
     if (info && info.length > 0) {
       return <>
-      <div> Name: {info[0].name} </div>
-         <div> Nationality: {info[0].nationality} </div>
-         <div> url: {info[0].url}<br/> </div>
-         <button
+        <div> Name: {info[0].name} </div>
+        <div> Nationality: {info[0].nationality} </div>
+        <div> url: {info[0].url}<br /> </div>
+        <button
           onClick={() => {
-           // creates an array with the values of favorites
+            // creates an array with the values of favorites
             if (favConst.indexOf(info[0].name) > -1) {
               return
             }
-            else{
+            else {
               favConst.push(info[0].name);
             }
             console.log(favConst)
-            }
+          }
           }
         >
           ❤︎
@@ -61,5 +61,5 @@ export const ConstructorModal = () => {
     </>
   );
 };
-  
+
 

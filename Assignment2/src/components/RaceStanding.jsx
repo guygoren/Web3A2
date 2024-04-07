@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import {  setRaceInfo, setDriverStandings, setConstructorsStandings } from '../slices/raceSlice';
+import { setRaceInfo, setDriverStandings, setConstructorsStandings } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { Modal } from './Modal';
@@ -46,30 +46,30 @@ export const RaceStanding = () => {
     let constructorUrl = `${ApiEndpointEnum.GetConstructorStandings}/${selectedRace}`
     let driverUrl = `${ApiEndpointEnum.GetDriverStandings}/${selectedRace}`
     fetch(constructorUrl)
-    .then(response => response.json())
-    .then(data => {
-      setConstructorsData(data)
-      console.log(data)
-    });
+      .then(response => response.json())
+      .then(data => {
+        setConstructorsData(data)
+        console.log(data)
+      });
     fetch(driverUrl)
-    .then(response => response.json())
-    .then(data => {
-      setDriverData(data)
-      console.log(data)
-    });
+      .then(response => response.json())
+      .then(data => {
+        setDriverData(data)
+        console.log(data)
+      });
     fetch(infoUrl)
-    .then(response => response.json())
-    .then(data => {
-      setRaceInfoData(data[0])
-      console.log(data[0])
-    });
+      .then(response => response.json())
+      .then(data => {
+        setRaceInfoData(data[0])
+        console.log(data[0])
+      });
   }, [selectedRace])
 
   return (
     <>
       <div className="box-column" id="column2">
-      Standings after Round: {raceInfo.round}  <br/> <table style={{ "width": "45%", "float": "left", "padding": "10px" }}>
-        <caption style={{"padding": "10px"}}>Drivers</caption>
+        Standings after Round: {raceInfo.round}  <br /> <table style={{ "width": "45%", "float": "left", "padding": "10px" }}>
+          <caption style={{ "padding": "10px" }}>Drivers</caption>
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
@@ -81,18 +81,18 @@ export const RaceStanding = () => {
           <tbody>
             {driverStandings.message ? "" :
               driverStandings.map((ds, index) => (
-              <tr key={index}>
-                <td>{ds.position}</td>
-                <td><button className='link' onClick={() => setOpener(true, ds.drivers.driverId, ModalTypeEnum.DRIVER) }> {ds.drivers.forename}</button></td>
-                <td>{ds.points}</td>
-                <td>{ds.wins}</td>
-              </tr>
-            ))}
+                <tr key={index}>
+                  <td>{ds.position}</td>
+                  <td><button className='link' onClick={() => setOpener(true, ds.drivers.driverId, ModalTypeEnum.DRIVER)}> {ds.drivers.forename}</button></td>
+                  <td>{ds.points}</td>
+                  <td>{ds.wins}</td>
+                </tr>
+              ))}
           </tbody>
-          
+
         </table>
         <table style={{ "width": "45%", "float": "right", "padding": "10px" }}>
-        <caption style={{"padding": "10px"}}>Constructors</caption>
+          <caption style={{ "padding": "10px" }}>Constructors</caption>
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
@@ -104,15 +104,15 @@ export const RaceStanding = () => {
           <tbody>
             {constructorsStandings.message ? "" :
               constructorsStandings.map((cs, index) => (
-              <tr key={index}>
-                <td>{cs.position}</td>
-                <td><button className='link' onClick={() => setOpener(true, cs.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR) }> {cs.constructors.name}</button></td>
-                <td>{cs.points}</td>
-                <td>{cs.wins}</td>
-              </tr>
-            ))}
+                <tr key={index}>
+                  <td>{cs.position}</td>
+                  <td><button className='link' onClick={() => setOpener(true, cs.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR)}> {cs.constructors.name}</button></td>
+                  <td>{cs.points}</td>
+                  <td>{cs.wins}</td>
+                </tr>
+              ))}
           </tbody>
-          
+
         </table>
       </div>
     </>

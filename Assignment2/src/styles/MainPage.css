@@ -3,8 +3,10 @@
 }
 
 .box-column {
-  flex-grow: 1; /* Flex grow is used to make the boxes flexible */
-  margin: 10px 10px; /* This adds spacing between the boxes */
+  flex-grow: 1;
+  /* Flex grow is used to make the boxes flexible */
+  margin: 10px 10px;
+  /* This adds spacing between the boxes */
   padding: 5px;
 }
 
@@ -15,7 +17,7 @@
 }
 
 #column1 button {
-  margin-right: 5px; 
+  margin-right: 5px;
   padding: 3px 5px 0px 5px;
 }
 

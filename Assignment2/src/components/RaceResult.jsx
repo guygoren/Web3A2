@@ -15,7 +15,7 @@ export const RaceResult = () => {
   const selectedRace = useSelector((state) => state.race.selectedRace)
   const raceInfo = useSelector((state) => state.race.raceInfo)
   const dispatch = useDispatch();
-  
+
   const setResultsData = (results) => {
     dispatch(setRaceResults(results));
   };
@@ -39,24 +39,24 @@ export const RaceResult = () => {
     let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
     let resultsUrl = `${ApiEndpointEnum.GetRaceResults}/${selectedRace}`
     fetch(resultsUrl)
-    .then(response => response.json())
-    .then(data => {
-      setResultsData(data)
-      console.log("data")
-      console.log(data)
-    });
+      .then(response => response.json())
+      .then(data => {
+        setResultsData(data)
+        console.log("data")
+        console.log(data)
+      });
     fetch(infoUrl)
-    .then(response => response.json())
-    .then(data => {
-      setRaceInfoData(data[0])
-      console.log(data[0])
-    });
+      .then(response => response.json())
+      .then(data => {
+        setRaceInfoData(data[0])
+        console.log(data[0])
+      });
   }, [selectedRace])
 
   return (
     <>
       <div className="box-column" id="column2">
-      {raceInfo.name}, Round:{raceInfo.round}, {raceInfo.year}, {raceInfo.date}, {raceInfo.circuits ? `${raceInfo.circuits.name}, ` : ""}, {raceInfo.url}        <table style={{ "width": "100%" }}>
+        {raceInfo.name}, Round:{raceInfo.round}, {raceInfo.year}, {raceInfo.date}, {raceInfo.circuits ? `${raceInfo.circuits.name}, ` : ""}, {raceInfo.url}        <table style={{ "width": "100%" }}>
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>Pos</th>
@@ -69,14 +69,14 @@ export const RaceResult = () => {
           <tbody>
             {results.message ? "" :
               results.map((res, index) => (
-              <tr key={index}>
-                <td>{res.position}</td>
-                <td><button className='link' onClick={() => setOpener(true, res.drivers.driverId, ModalTypeEnum.DRIVER) }> {res.drivers.forename}</button></td>
-                <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR) }> {res.constructors.name}</button></td>
-                <td>{res.laps}</td>
-                <td>{res.points}</td>
-              </tr>
-            ))}
+                <tr key={index}>
+                  <td>{res.position}</td>
+                  <td><button className='link' onClick={() => setOpener(true, res.drivers.driverId, ModalTypeEnum.DRIVER)}> {res.drivers.forename}</button></td>
+                  <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR)}> {res.constructors.name}</button></td>
+                  <td>{res.laps}</td>
+                  <td>{res.points}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

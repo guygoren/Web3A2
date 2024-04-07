@@ -1,4 +1,4 @@
-import '../styles/modal.css'; 
+import '../styles/modal.css';
 import { useSelector, useDispatch } from 'react-redux'; // Importing hooks for accessing Redux store
 import { setCircuitInfo } from '../slices/circuitSlice'; // Importing Redux action for setting circuit information
 import { useEffect } from 'react';
@@ -6,7 +6,7 @@ import { ApiEndpointEnum } from '../enum/apiEndpointEnum'; // Importing enumerat
 import { favCirc } from './FavouriteList'; // Importing favorite circuit list
 
 export const CircuitModal = () => {
- 
+
   const circuitId = useSelector((state) => state.circuit.circuitId);
   const circuitInfo = useSelector((state) => state.circuit.circuitInfo);
   const dispatch = useDispatch(); // Dispatch function for Redux actions
@@ -35,7 +35,7 @@ export const CircuitModal = () => {
           <div> Name: {info[0].name} </div>
           <div> Location: {info[0].location} </div>
           <div> Country: {info[0].country} </div>
-          <div> URL: {info[0].url}<br/> </div>
+          <div> URL: {info[0].url}<br /> </div>
           <button
             onClick={() => {
               // Adding circuit name to favorite list if it's not already there

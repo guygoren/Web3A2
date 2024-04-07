@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum'; // Importing enumeration for API endpoints
-import { setDriverInfo } from '../slices/driverSlice'; 
+import { setDriverInfo } from '../slices/driverSlice';
 import { favDriver } from './FavouriteList'; // Importing favorite driver list
 
 export const DriverModal = () => {
@@ -25,21 +25,21 @@ export const DriverModal = () => {
       });
   }, [driverId]); // activates when driverId changes
 
- //Renders driver information
+  //Renders driver information
   const renderData = (info) => {
     if (info && info.length > 0) { // Checking if info exists and is not empty
       return (
         <>
           <div> Name: {info[0].forename} {info[0].surname} </div>
           <div> Nationality: {info[0].nationality} </div>
-          <div> URL: {info[0].url}<br/> </div>
+          <div> URL: {info[0].url}<br /> </div>
           <button
             onClick={() => {
               // Adding driver name to favorite list if it's not already there
               if (favDriver.indexOf(info[0].forename) > -1) {
                 return; // If already favorited, do nothing
               } else {
-                favDriver.push(info[0].forename); 
+                favDriver.push(info[0].forename);
               }
             }}
           >

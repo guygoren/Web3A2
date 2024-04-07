@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
-export function NamePopUp(props){
+export function NamePopUp(props) {
   // const selectedYear = useSelector((state) => state.year.selectedYear);
   // const dispatch = useDispatch();
 
@@ -11,8 +11,8 @@ export function NamePopUp(props){
   };
 
   return (
-    <button className ='link' onClick={showModal} style={{ "marginRight": "10px" }}>
-    {props.name}
+    <button className='link' onClick={showModal} style={{ "marginRight": "10px" }}>
+      {props.name}
     </button>
   )
 }

@@ -1,5 +1,5 @@
 // Stores favs
-export let favConst = []; 
+export let favConst = [];
 
 export let favDriver = [];
 

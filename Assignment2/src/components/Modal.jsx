@@ -40,8 +40,8 @@ export const Modal = () => {
     <div className='overlay'>
       <div className='modal'>
         <div className='modal-content'>
-        {decideType()}
-        <button onClick={() => setOpener(false)}>Close</button>
+          {decideType()}
+          <button onClick={() => setOpener(false)}>Close</button>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ export const Header = () => {
     <>
       <div className="navbar">
         <div className="box" id="box1">
-            {/* Renders Year Selector*/}
+          {/* Renders Year Selector*/}
           <YearSelector />
         </div>
         <div className="box" id="box2">
