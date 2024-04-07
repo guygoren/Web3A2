@@ -3,16 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';// Importing hooks for ac
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { setConstructorInfo } from '../slices/constructorSlice'; // Importing Redux action for setting circuit information
-import { favConst } from './FavouriteList'; // Importing favorite Constructor list
+import { setConstructorFavourites } from '../slices/favouritesSlice';
 
 export const ConstructorModal = () => {
   const constructorId = useSelector((state) => state.constructors.constructorId)
   const constructorInfo = useSelector((state) => state.constructors.constructorInfo)
+  const favConstructors = useSelector((state) => state.favourite.constructorFavourites);
   const dispatch = useDispatch(); // Dispatch function for Redux actions
 
   // Function to set constructor information in slice
   const setConstructorInfoData = (info) => {
     dispatch(setConstructorInfo(info))
+  }
+
+  const addConstructorFavorite = (newfav) => {
+    if (favConstructors.includes(newfav)) return
+    dispatch(setConstructorFavourites([...favConstructors,newfav]))
+    alert(`Added ${newfav} to Favorites`)
   }
 
   // Calls API for contructor info
@@ -34,16 +41,8 @@ export const ConstructorModal = () => {
         <div> Nationality: {info[0].nationality} </div>
         <div> url: {info[0].url}<br /> </div>
         <button
-          onClick={() => {
-            // creates an array with the values of favorites
-            if (favConst.indexOf(info[0].name) > -1) {
-              return
-            }
-            else {
-              favConst.push(info[0].name);
-            }
-            console.log(favConst)
-          }
+          onClick={() => 
+            addConstructorFavorite(info[0].name)
           }
         >
           ❤︎

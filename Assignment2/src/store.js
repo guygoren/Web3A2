@@ -6,6 +6,7 @@ import modalReducer from './slices/modalSlice';
 import circuitReducer from './slices/circuitSlice';
 import constructorReducer from './slices/constructorSlice'
 import driverReducer from './slices/driverSlice'
+import favouritesReducer from './slices/favouritesSlice';
 // Import your reducers here
 // import someReducer from './features/someFeature/someReducer';
 
@@ -18,6 +19,7 @@ export const store = configureStore({
     circuit: circuitReducer,
     constructors: constructorReducer,
     driver: driverReducer,
+    favourite: favouritesReducer,
   },
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(yourMiddleware),
   // You can add more middleware here

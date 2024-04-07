@@ -7,20 +7,31 @@ import { ModalTypeEnum } from '../enum/modalTypeEnum';
 import { CircuitModal } from './CircuitModal';
 import { ConstructorModal } from './ConstructorModal';
 import { DriverModal } from './DriverModal';
+import { FavoriteModal} from './FavoriteModal'
 
 export const Modal = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.isOpen);
   const modalType = useSelector((state) => state.modal.modalType);
+  
+  let modalWidth = '600px'
 
-  function decideType() {
+
+
+  const  decideType = () => {
     switch (modalType) {
       case ModalTypeEnum.CIRCUIT:
+        modalWidth = '600px'
         return <CircuitModal />
       case ModalTypeEnum.CONSTRUCTOR:
+        modalWidth = '600px'
         return <ConstructorModal />
       case ModalTypeEnum.DRIVER:
+        modalWidth = '600px'
         return <DriverModal />
+      case ModalTypeEnum.FAVOURITE:
+        modalWidth = '900px'
+        return <FavoriteModal />
       default:
         return <div> this is crazy, but here is my number </div>
     }
@@ -32,14 +43,14 @@ export const Modal = () => {
 
   useEffect(() => {
     console.log(isOpen)
-  }, [isOpen])
+  }, [isOpen, modalWidth])
 
   if (!isOpen) return null;
 
   return (
-    <div className='overlay'>
-      <div className='modal'>
-        <div className='modal-content'>
+    <div className='overlay' >
+      <div className='modal' >
+        <div className='modal-content'style={{"width": modalWidth}}>
           {decideType()}
           <button onClick={() => setOpener(false)}>Close</button>
         </div>

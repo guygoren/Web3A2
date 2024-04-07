@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'; // Importing hooks for a
 import { setCircuitInfo } from '../slices/circuitSlice'; // Importing Redux action for setting circuit information
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum'; // Importing enumeration for API endpoints
-import { favCirc } from './FavouriteList'; // Importing favorite circuit list
+import { setCircuitFavourites } from '../slices/favouritesSlice';
 
 export const CircuitModal = () => {
-
+  const favCircuits = useSelector((state) => state.favourite.circuitFavourites);
   const circuitId = useSelector((state) => state.circuit.circuitId);
   const circuitInfo = useSelector((state) => state.circuit.circuitInfo);
   const dispatch = useDispatch(); // Dispatch function for Redux actions
@@ -15,6 +15,13 @@ export const CircuitModal = () => {
   const setCircuitInfoData = (info) => {
     dispatch(setCircuitInfo(info));
   };
+
+  const addCircuitFavorite = (newfav) => {
+    if (favCircuits.includes(newfav)) return
+    dispatch(setCircuitFavourites([...favCircuits,newfav]))
+    alert(`Added ${newfav} to Favorites`)
+  }
+
 
   // Calls API for circuit info
   useEffect(() => {
@@ -37,14 +44,7 @@ export const CircuitModal = () => {
           <div> Country: {info[0].country} </div>
           <div> URL: {info[0].url}<br /> </div>
           <button
-            onClick={() => {
-              // Adding circuit name to favorite list if it's not already there
-              if (favCirc.indexOf(info[0].name) > -1) {
-                return; // If already favorited, do nothing
-              } else {
-                favCirc.push(info[0].name);
-              }
-            }}
+            onClick={() => addCircuitFavorite(info[0].name)}
           >
             ❤︎ {/* Button for adding circuit to favorites */}
           </button>

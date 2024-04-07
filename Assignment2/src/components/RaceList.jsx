@@ -47,7 +47,7 @@ export const RaceList = () => {
           <thead>
             <tr>
               <th style={{ "width": "5%" }}>ID</th>
-              <th style={{ "width": "80%" }}>Name (cur: {selectedRace})</th>
+              <th style={{ "width": "80%" }}>Name</th>
             </tr>
           </thead>
           <tbody>

@@ -1,13 +1,10 @@
-import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { setRaceInfo, setRaceResults } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
-import { NamePopUp } from './NamePopUp';
 import { setConstructorId } from '../slices/constructorSlice';
 import { setDriverId } from '../slices/driverSlice';
 import { setIsOpen, setModalType } from '../slices/modalSlice';
-import { Modal } from './Modal';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
 export const RaceResult = () => {

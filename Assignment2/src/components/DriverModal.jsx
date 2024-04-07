@@ -2,9 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum'; // Importing enumeration for API endpoints
 import { setDriverInfo } from '../slices/driverSlice';
-import { favDriver } from './FavouriteList'; // Importing favorite driver list
+import { setDriverFavourites } from '../slices/favouritesSlice';
 
 export const DriverModal = () => {
+  const favDrivers = useSelector((state) => state.favourite.driverFavourites);
   const driverId = useSelector((state) => state.driver.driverId);
   const driverInfo = useSelector((state) => state.driver.driverInfo);
   const dispatch = useDispatch(); // Dispatch function for Redux actions
@@ -12,6 +13,12 @@ export const DriverModal = () => {
   // Sets Driver Info
   const setDriverInfoData = (info) => {
     dispatch(setDriverInfo(info));
+  }
+
+  const setFavoriteDriver = (newfav) => {
+    if (favDrivers.includes(newfav)) return
+    dispatch(setDriverFavourites([...favDrivers,newfav]))
+    alert(`Added ${newfav} to Favorites`)
   }
 
   // calls api Driver info API
@@ -34,14 +41,7 @@ export const DriverModal = () => {
           <div> Nationality: {info[0].nationality} </div>
           <div> URL: {info[0].url}<br /> </div>
           <button
-            onClick={() => {
-              // Adding driver name to favorite list if it's not already there
-              if (favDriver.indexOf(info[0].forename) > -1) {
-                return; // If already favorited, do nothing
-              } else {
-                favDriver.push(info[0].forename + " " + info[0].surname);
-              }
-            }}
+            onClick={() => setFavoriteDriver(info[0].forename)}
           >
             ❤︎ {/* Button for adding driver to favorites */}
           </button>

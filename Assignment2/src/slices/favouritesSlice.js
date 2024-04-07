@@ -4,27 +4,27 @@ import { createSlice } from '@reduxjs/toolkit';
 export const FavouriteSlice = createSlice({
   name: 'favourite',
   initialState: {
-    circuitfavourites: [],
-    driverfavourites: [],
-    constructorfavourites: [],
+    circuitFavourites: [],
+    driverFavourites: [],
+    constructorFavourites: [],
   },
   reducers: {
-    setcircuitfavourites: (state, action) => {
-      state.circuitfavourites = action.payload;
+    setCircuitFavourites: (state, action) => {
+      state.circuitFavourites = action.payload;
     },
-    setpersonfavourites: (state, action) => {
-      state.personfavourites = action.payload;
+    setDriverFavourites: (state, action) => {
+      state.driverFavourites = action.payload;
     },
-    setconstructorfavourites: (state, action) => {
-      state.constructorfavourites = action.payload;
+    setConstructorFavourites: (state, action) => {
+      state.constructorFavourites = action.payload;
     },
   }
 });
 
 export const {
-  setcircuitfavourites,
-  setpersonfavourites,
-  setconstructorfavourites,
+  setCircuitFavourites,
+  setDriverFavourites,
+  setConstructorFavourites,
 } = FavouriteSlice.actions;
 
 export default FavouriteSlice.reducer;
