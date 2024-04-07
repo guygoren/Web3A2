@@ -15,7 +15,7 @@ export const LoginBox = ({ onActivate }) => {
       <button
         onClick={onActivate}
       >
-        Hello
+        Login
       </button>
       <button>
         Register

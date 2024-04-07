@@ -12,8 +12,7 @@ const App = () => {
   // Function to handle activation
   const handleActivate = () => {
     setLoggedIn(true); // Set loggedIn to true when activated
-    console.log("yeah")
-    document.body.style.backgroundImage = 'url("./src/styles/vyj3h49915t41.png")';
+    document.body.style.backgroundImage = 'url("/Hero.png")';
   };
 
   // Rendering based on login status
