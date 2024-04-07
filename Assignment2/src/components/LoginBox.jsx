@@ -1,4 +1,5 @@
 import React from "react";
+import { LoggedIn } from "../App";
 export const LoginBox = () => {
     return (
       <div>
@@ -9,7 +10,7 @@ export const LoginBox = () => {
       </label>
         <button
         onClick={() => {
-          console.log("hello");
+          LoggedIn = true;
         }
       }
       >

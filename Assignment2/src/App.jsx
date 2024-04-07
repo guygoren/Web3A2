@@ -1,11 +1,22 @@
 import { useState } from 'react'
 import './App.css'
+import { LoginBox } from './components/LoginBox'
 import { MainPage } from './components/MainPage'
 
-function App() {
+
+export let LoggedIn = false
+const App = props => {
+
+  if(LoggedIn){
+    return(
+      <MainPage />
+    )
+  }
+  else{
   return (
-    <MainPage />
+    <LoginBox />
   )
+}
 }
 
 export default App

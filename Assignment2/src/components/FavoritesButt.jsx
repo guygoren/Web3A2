@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { favConst } from './FavouriteList'; // Importing favorite constructors
 import { favCirc } from './FavouriteList'; // Importing favorite circuits
 import { favDriver } from './FavouriteList'; // Importing favorite drivers
-
+import { favCLear } from './FavouriteList';
 
 export function FavoritesButt() {
   const [show, setShow] = useState(false); // State variable viewing modal
@@ -16,7 +16,10 @@ export function FavoritesButt() {
   const handleShow = () => setShow(true);
 
   const clearFavourites = () => {
-    favCirc = []
+    favCirc.length = 0
+    favConst.length = 0
+    favDriver.length = 0
+    handleClose();
   }
 
 
