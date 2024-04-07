@@ -1,34 +1,33 @@
-import React from 'react'
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+//Modal for Contructor information
+import { useSelector, useDispatch } from 'react-redux';// Importing hooks for accessing Redux store
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
-import { setConstructorInfo } from '../slices/constructorSlice';
-import { favConst } from './FavouriteList';
+import { setConstructorInfo } from '../slices/constructorSlice'; // Importing Redux action for setting circuit information
+import { favConst } from './FavouriteList'; // Importing favorite Constructor list
 
 export const ConstructorModal = () => {
   const constructorId = useSelector((state) => state.constructors.constructorId)
   const constructorInfo = useSelector((state) => state.constructors.constructorInfo)
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Dispatch function for Redux actions
 
+  // Function to set constructor information in slice
   const setConstructorInfoData = (info) => {
     dispatch(setConstructorInfo(info))
   }
 
+  // Calls API for contructor info
   useEffect(() => {
     let url = `${ApiEndpointEnum.GetConstructorInfo}/${constructorId}`
 
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        setConstructorInfoData(data)
+        setConstructorInfoData(data) // calls function to set constructor info
       });
-  }, [constructorId])
+  }, [constructorId]) // trigger when contructorId changes
 
 
   const renderData = (info) => {
-  
     if (info && info.length > 0) {
       return <>
       <div> Name: {info[0].name} </div>

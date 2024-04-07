@@ -1,3 +1,4 @@
+// slice which stores information about circuit and the circuit id. Useful for the Modal
 import { createSlice } from '@reduxjs/toolkit';
 
 export const circuitSlice = createSlice({

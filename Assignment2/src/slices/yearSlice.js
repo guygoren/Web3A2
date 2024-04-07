@@ -1,3 +1,4 @@
+// Stores the selected year
 import { createSlice } from '@reduxjs/toolkit';
 
 export const yearSlice = createSlice({

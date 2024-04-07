@@ -1,3 +1,5 @@
+//This is the about button
+
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -11,7 +13,7 @@ export function AboutButt() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        About
       </Button>
 
       <Modal show={show} onHide={handleClose}>

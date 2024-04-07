@@ -1,3 +1,4 @@
+// slice which stores information about the driver and the driver id. Used in the driver modal
 import { createSlice } from '@reduxjs/toolkit';
 
 export const driverSlice = createSlice({

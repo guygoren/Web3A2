@@ -1,3 +1,4 @@
+// Stores all information to be shown on page
 import { createSlice } from '@reduxjs/toolkit';
 
 export const raceSlice = createSlice({

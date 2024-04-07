@@ -1,4 +1,4 @@
-import React from 'react'
+
 import '../styles/modal.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { setIsOpen } from '../slices/modalSlice';

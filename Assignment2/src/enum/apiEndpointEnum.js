@@ -1,5 +1,5 @@
+// Stores API endpoints, reusing baseurl to make it more readable
 let baseUrl = "https://four513assignment1evangadsby.onrender.com"
-// https://four513assignment1evangadsby.onrender.com
 
 export const ApiEndpointEnum = {
   // /api/races/season/:year

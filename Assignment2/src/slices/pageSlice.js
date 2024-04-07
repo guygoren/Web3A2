@@ -1,3 +1,4 @@
+// Stores which page the user clicked on
 import { createSlice } from '@reduxjs/toolkit';
 import { PageStateEnum } from '../enum/pageStateEnum';
 

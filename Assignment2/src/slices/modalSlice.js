@@ -1,3 +1,4 @@
+// Blank slate for modals, made this so every modal dosnt need a seperate slice/streamline coding
 import { createSlice } from '@reduxjs/toolkit';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 

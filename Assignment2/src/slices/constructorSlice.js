@@ -1,3 +1,4 @@
+// slice which stores information about the constructor and the constructor id. Used in the constructor modal
 import { createSlice } from '@reduxjs/toolkit';
 
 export const constructorSlice = createSlice({

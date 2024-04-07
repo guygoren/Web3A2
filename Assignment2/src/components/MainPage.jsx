@@ -1,3 +1,4 @@
+// Mainpage which calls all the components
 import { Header } from "./Header"
 import { RaceList } from "./RaceList"
 import { DataSection } from "./DataSection"
