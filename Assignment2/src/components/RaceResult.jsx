@@ -6,6 +6,7 @@ import { setConstructorId } from '../slices/constructorSlice';
 import { setDriverId } from '../slices/driverSlice';
 import { setIsOpen, setModalType } from '../slices/modalSlice';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 export const RaceResult = () => {
   const results = useSelector((state) => state.race.raceResults)
@@ -49,7 +50,21 @@ export const RaceResult = () => {
         console.log(data[0])
       });
   }, [selectedRace])
-
+  let renderPosition = (pos) => {
+    console.log(pos)
+    switch (pos) {
+      case "1":
+        return <EmojiEventsIcon style={{ color: '#FFE867' }} />;
+      case "2":
+        return <EmojiEventsIcon style={{ color: '#C2C2C2' }} />;
+      case "3":
+        return <EmojiEventsIcon style={{ color: '#9E683C' }} />;
+      case null:
+        return <span>DNF</span>;
+      default:
+        return <span>{pos}</span>;
+    }
+  }
   return (
     <>
       <div className="box-column" id="column2">
@@ -67,8 +82,7 @@ export const RaceResult = () => {
             {results.message ? "" :
               results.map((res, index) => (
                 <tr key={index}>
-                  <td>{
-                  res.position == null ? "DNF" : res.position}</td>
+                  <td>{renderPosition(res.position)}</td>
                   <td><button className='link' onClick={() => setOpener(true, res.drivers.driverId, ModalTypeEnum.DRIVER)}> {res.drivers.forename +" " + res.drivers.surname}</button></td>
                   <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR)}> {res.constructors.name}</button></td>
                   <td>{res.laps}</td>

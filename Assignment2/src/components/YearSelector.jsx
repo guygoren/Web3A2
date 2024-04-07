@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { setYear } from '../slices/yearSlice';
+import { setYear, setWasSelected } from '../slices/yearSlice';
 
 function makeYears() {
   let options = [];
@@ -16,6 +16,7 @@ export const YearSelector = () => {
 
   const handleYearChange = (event) => {
     dispatch(setYear(Number(event.target.value)));
+    dispatch(setWasSelected(true))
   };
 
   return (
