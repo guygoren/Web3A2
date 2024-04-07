@@ -83,7 +83,7 @@ export const RaceStanding = () => {
               driverStandings.map((ds, index) => (
                 <tr key={index}>
                   <td>{ds.position}</td>
-                  <td><button className='link' onClick={() => setOpener(true, ds.drivers.driverId, ModalTypeEnum.DRIVER)}> {ds.drivers.forename}</button></td>
+                  <td><button className='link' onClick={() => setOpener(true, ds.drivers.driverId, ModalTypeEnum.DRIVER)}> {ds.drivers.forename + " " + ds.drivers.surname}</button></td>
                   <td>{ds.points}</td>
                   <td>{ds.wins}</td>
                 </tr>

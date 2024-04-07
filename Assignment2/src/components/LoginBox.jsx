@@ -1,6 +1,6 @@
-import React from "react";
-import { LoggedIn } from "../App";
-export const LoginBox = () => {
+import React, { useState } from 'react';
+
+export const LoginBox = ({ onActivate }) => {
   return (
     <div>
       <h1>Login</h1>
@@ -9,10 +9,7 @@ export const LoginBox = () => {
         Password: <input name="myInput" /> <br />
       </label>
       <button
-        onClick={() => {
-          LoggedIn = true;
-        }
-        }
+        onClick={onActivate}
       >
         Hello
       </button>

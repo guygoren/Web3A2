@@ -70,8 +70,9 @@ export const RaceResult = () => {
             {results.message ? "" :
               results.map((res, index) => (
                 <tr key={index}>
-                  <td>{res.position}</td>
-                  <td><button className='link' onClick={() => setOpener(true, res.drivers.driverId, ModalTypeEnum.DRIVER)}> {res.drivers.forename}</button></td>
+                  <td>{
+                  res.position == null ? "DNF" : res.position}</td>
+                  <td><button className='link' onClick={() => setOpener(true, res.drivers.driverId, ModalTypeEnum.DRIVER)}> {res.drivers.forename +" " + res.drivers.surname}</button></td>
                   <td><button className='link' onClick={() => setOpener(true, res.constructors.constructorId, ModalTypeEnum.CONSTRUCTOR)}> {res.constructors.name}</button></td>
                   <td>{res.laps}</td>
                   <td>{res.points}</td>

@@ -4,19 +4,24 @@ import { LoginBox } from './components/LoginBox'
 import { MainPage } from './components/MainPage'
 
 
-export let LoggedIn = false
-const App = props => {
 
-  if (LoggedIn) {
-    return (
-      <MainPage />
-    )
-  }
-  else {
-    return (
-      <LoginBox />
-    )
-  }
-}
+const App = () => {
+  // State to track login status
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  // Function to handle activation
+  const handleActivate = () => {
+    setLoggedIn(true); // Set loggedIn to true when activated
+    console.log("yeah")
+  };
+
+  // Rendering based on login status
+  return (
+    <div>
+      {!loggedIn ? (<LoginBox onActivate={handleActivate} />) : (<MainPage />)}
+
+    </div>
+  );
+};
 
 export default App

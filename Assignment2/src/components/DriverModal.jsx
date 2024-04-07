@@ -39,7 +39,7 @@ export const DriverModal = () => {
               if (favDriver.indexOf(info[0].forename) > -1) {
                 return; // If already favorited, do nothing
               } else {
-                favDriver.push(info[0].forename);
+                favDriver.push(info[0].forename + " " + info[0].surname);
               }
             }}
           >
