@@ -1,0 +1,9 @@
+body{
+ background-image: url('download.jpg');
+ background-size: cover;
+background-repeat: no-repeat;
+color: #f9f9f9;
+}
+.login{
+    color: aquamarine;
+}

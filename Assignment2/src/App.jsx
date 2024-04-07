@@ -13,6 +13,7 @@ const App = () => {
   const handleActivate = () => {
     setLoggedIn(true); // Set loggedIn to true when activated
     console.log("yeah")
+    document.body.style.backgroundImage = 'url("./src/styles/vyj3h49915t41.png")';
   };
 
   // Rendering based on login status
