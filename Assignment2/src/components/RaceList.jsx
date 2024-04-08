@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useSelector, useDispatch } from 'react-redux';
 import { setRaces, setSelectedRace } from '../slices/raceSlice';
 import { setIsOpen, setModalType } from '../slices/modalSlice';
@@ -9,22 +9,25 @@ import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
 import { Modal } from './Modal'
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
+
 export const RaceList = () => {
   const races = useSelector((state) => state.race.races);
   const selectedYear = useSelector((state) => state.year.selectedYear)
-  const selectedRace = useSelector((state) => state.race.selectedRace)
   const dispatch = useDispatch();
 
+  // Fucntion to open a modal with the circuit id and modaltype
   const setOpener = (isOpen, circId, modalType) => {
     dispatch(setIsOpen(isOpen))
     dispatch(setCircuitId(Number(circId)))
     dispatch(setModalType(Number(modalType)))
   }
 
+  // Function to set races
   const setNewSeasonRaces = (races) => {
     dispatch(setRaces(races));
   };
 
+  // function to set specific selected race
   const setCurrentRace = (raceId) => {
     dispatch(setSelectedRace(Number(raceId)));
   };
@@ -51,6 +54,7 @@ export const RaceList = () => {
             </tr>
           </thead>
           <tbody>
+            {/* Maps all the races and the information button which opens a modal */}
             {races.map((race, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
@@ -61,6 +65,7 @@ export const RaceList = () => {
           </tbody>
         </table>
       </div>
+      {/* Calls modal */}
       <Modal />
     </>
   )

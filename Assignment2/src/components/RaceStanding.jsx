@@ -1,24 +1,27 @@
-import React from 'react'
+// Renders page for race standings
 import { useSelector, useDispatch } from 'react-redux';
 import { setRaceInfo, setDriverStandings, setConstructorsStandings } from '../slices/raceSlice';
 import { useEffect } from 'react';
 import { ApiEndpointEnum } from '../enum/apiEndpointEnum';
-import { Modal } from './Modal';
 import { setIsOpen, setModalType } from '../slices/modalSlice';
 import { setConstructorId } from '../slices/constructorSlice';
 import { setDriverId } from '../slices/driverSlice';
 import { ModalTypeEnum } from '../enum/modalTypeEnum';
 
+
 export const RaceStanding = () => {
+   // Gets variables from redux
   const driverStandings = useSelector((state) => state.race.driverStandings)
   const constructorsStandings = useSelector((state) => state.race.constructorsStandings)
   const selectedRace = useSelector((state) => state.race.selectedRace)
   const raceInfo = useSelector((state) => state.race.raceInfo)
   const dispatch = useDispatch();
 
+  // sets race information (just to list round in this case)
   const setRaceInfoData = (information) => {
     dispatch(setRaceInfo(information));
   }
+  // Opens modal based on id and the type of modal clicked on
   const setOpener = (isOpen, id, modalType) => {
     switch (modalType) {
       case ModalTypeEnum.DRIVER:
@@ -32,15 +35,16 @@ export const RaceStanding = () => {
     dispatch(setModalType(Number(modalType)))
     console.log(modalType)
   }
-
+  // Sets driver data
   const setDriverData = (driverStandings) => {
     dispatch(setDriverStandings(driverStandings));
   };
-
+  // Sets constructor data
   const setConstructorsData = (constructorStandings) => {
     dispatch(setConstructorsStandings(constructorStandings))
   }
 
+  // Apis calls for Race info, constructor info, and driver info
   useEffect(() => {
     let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
     let constructorUrl = `${ApiEndpointEnum.GetConstructorStandings}/${selectedRace}`
@@ -67,8 +71,10 @@ export const RaceStanding = () => {
 
   return (
     <>
+     {/* Lists the round at the top of the page */}
       <div className="box-column" id="column2">
         Standings after Round: {raceInfo.round}  <br /> <table style={{ "width": "45%", "float": "left", "padding": "10px" }}>
+          {/* Creates one table to list driver information and lets you click on driver names */}
           <caption style={{ "padding": "10px" }}>Drivers</caption>
           <thead>
             <tr>
@@ -92,6 +98,7 @@ export const RaceStanding = () => {
 
         </table>
         <table style={{ "width": "45%", "float": "right", "padding": "10px" }}>
+          {/* Creates one table to list constructor information and lets you click on constructor names */}
           <caption style={{ "padding": "10px" }}>Constructors</caption>
           <thead>
             <tr>

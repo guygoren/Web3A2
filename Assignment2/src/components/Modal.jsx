@@ -9,15 +9,18 @@ import { ConstructorModal } from './ConstructorModal';
 import { DriverModal } from './DriverModal';
 import { FavoriteModal} from './FavoriteModal'
 
+
 export const Modal = () => {
   const dispatch = useDispatch();
+  // Gets variables for 
   const isOpen = useSelector((state) => state.modal.isOpen);
   const modalType = useSelector((state) => state.modal.modalType);
   
+  // changing the modal width because the favorites modal needs to be the biggest to fit everything inside
   let modalWidth = '600px'
 
 
-
+// Determines which modal to return based on the enum we are passing in
   const  decideType = () => {
     switch (modalType) {
       case ModalTypeEnum.CIRCUIT:
@@ -36,7 +39,7 @@ export const Modal = () => {
         return <div> this is crazy, but here is my number </div>
     }
   }
-
+  // Dispatcher for checking if modal is open
   const setOpener = (isOpen) => {
     dispatch(setIsOpen(isOpen))
   }
@@ -46,7 +49,7 @@ export const Modal = () => {
   }, [isOpen, modalWidth])
 
   if (!isOpen) return null;
-
+// Creates modal based on enum but always sets the close button which will close the modal when clicked
   return (
     <div className='overlay' >
       <div className='modal' >

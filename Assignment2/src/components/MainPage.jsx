@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import "../styles/MainPage.css"
 import { useEffect } from 'react';
 
+
 export const MainPage = () => {
+  // Determines if a year was selected to render the rest of the page (not just the header)
   const Selected = useSelector((state) => state.year.wasSelected);
   
 
@@ -21,6 +23,7 @@ export const MainPage = () => {
       )
     }  
   }
+  // Renders just the header when the page is loaded
   useEffect(() => {console.log("page loaded")}, [Selected])
   return (
     <div>

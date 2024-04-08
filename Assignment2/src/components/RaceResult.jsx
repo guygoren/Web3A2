@@ -1,3 +1,4 @@
+// Renders page for race results
 import { useSelector, useDispatch } from 'react-redux';
 import { setRaceInfo, setRaceResults } from '../slices/raceSlice';
 import { useEffect } from 'react';
@@ -14,12 +15,17 @@ export const RaceResult = () => {
   const raceInfo = useSelector((state) => state.race.raceInfo)
   const dispatch = useDispatch();
 
+  // Gets results data
   const setResultsData = (results) => {
     dispatch(setRaceResults(results));
   };
+
+  // Gets race information
   const setRaceInfoData = (information) => {
     dispatch(setRaceInfo(information));
   }
+
+  // Opens modal based on id and the type of modal clicked on
   const setOpener = (isOpen, id, modalType) => {
     switch (modalType) {
       case ModalTypeEnum.DRIVER:
@@ -34,6 +40,7 @@ export const RaceResult = () => {
     console.log(modalType)
   }
   useEffect(() => {
+        // Api urls for race information (banner at top) and the race results list
     let infoUrl = `${ApiEndpointEnum.GetRaceInformation}/${selectedRace}`
     let resultsUrl = `${ApiEndpointEnum.GetRaceResults}/${selectedRace}`
     fetch(resultsUrl)
@@ -50,6 +57,8 @@ export const RaceResult = () => {
         console.log(data[0])
       });
   }, [selectedRace])
+
+  // Creates emojis for first, second and third place to make the podium standings pop more
   let renderPosition = (pos) => {
     console.log(pos)
     switch (pos) {
@@ -67,6 +76,7 @@ export const RaceResult = () => {
   }
   return (
     <>
+    {/* Gets information to make the banner at the top with information about the race */}
       <div className="box-column" id="column2">
         {raceInfo.name}, Round:{raceInfo.round}, {raceInfo.year}, {raceInfo.date}, {raceInfo.circuits ? `${raceInfo.circuits.name}, ` : ""}, {raceInfo.url}        <table style={{ "width": "100%" }}>
           <thead>
@@ -79,6 +89,7 @@ export const RaceResult = () => {
             </tr>
           </thead>
           <tbody>
+            {/* Creates a list of driver standings with clickable links for drivers and constructors */}
             {results.message ? "" :
               results.map((res, index) => (
                 <tr key={index}>
