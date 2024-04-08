@@ -55,7 +55,7 @@ export const Modal = () => {
       <div className='modal' >
         <div className='modal-content'style={{"width": modalWidth}}>
           {decideType()}
-          <button onClick={() => setOpener(false)}>Close</button>
+          <button onClick={() => setOpener(false)} style={{ "marginLeft": "10px" }}>Close</button> 
         </div>
       </div>
     </div>
